@@ -12,7 +12,8 @@ export default {
   	extend: {
   		fontFamily: {
   			jet: ['JetBrains Mono'],
-  			lateef: ['Lateef']
+  			lateef: ['Lateef'],
+  			katib: ['Katibeh'],
   		},
   		borderRadius: {
   			lg: 'var(--radius)',

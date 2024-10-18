@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import { Separator } from './ui/separator'
 import Link from 'next/link'
@@ -14,8 +15,21 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Input } from "@/components/ui/input"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { useAuth } from '@/hooks/useAuth'
+import { signOut } from 'firebase/auth'
+import logoutUser from '../../../../packages/fireb/auth'
 
 const header = () => {
+    const { user, loading } = useAuth();
+    const handlelogout = async () => {
+        await logoutUser()
+
+
+    }
+    if (loading) {
+        // Optionally render a loading spinner
+        return <div>Loading...</div>;
+      }
   return (
     <div className='w-full' dir='rtl'>
         
@@ -79,12 +93,32 @@ const header = () => {
           </Link>
           
           </div>
-          <div>
-            <span>
-                صفحة التسجيل
-  
-            </span>
-          </div>
+         { !user ? (
+            <div className='flex flex-row gap-2  '>
+                
+                    <span className='text-muted-foreground hover:text-foreground text-3xl'>
+                        <Link href="/auth/login">تسجيل</Link>
+                    </span>
+                    
+                
+          </div>):
+
+             
+          (<DropdownMenu dir='rtl'>
+            <DropdownMenuTrigger asChild>
+              <Button variant="secondary" size="icon" className="rounded-full">
+                <CircleUser className="h-5 w-5" />
+                <span className="sr-only">Toggle user menu</span>
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className='font-lateef ' align="end" >
+              <DropdownMenuLabel className='text-xl'>حسابي</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem className='text-xl'>إعدادات</DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem className='text-xl' onClick={handlelogout}>خروج</DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>)}
         </nav>
         <Sheet>
           <SheetTrigger asChild>
@@ -136,6 +170,10 @@ const header = () => {
             </nav>
           </SheetContent>
         </Sheet>
+
+        
+       
+        
        
       </header>
     </div>

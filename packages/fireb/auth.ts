@@ -1,6 +1,6 @@
 // auth.ts
 import { auth } from './'; // Adjust this import based on your file structure
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, signOut } from 'firebase/auth';
 import { getFirestore, doc, setDoc } from 'firebase/firestore';
 
 // Sign up a new userconst db = getFirestore(); // Initialize Firestore
@@ -53,3 +53,14 @@ export const signInWithGoogle = async () => {
     console.error("Google sign in error:", error.code, error.message);
   }
 };
+
+export default function logoutUser() {
+  signOut(auth)
+    .then(() => {
+      console.log("User signed out.");
+      // Redirect to login page or update UI
+    })
+    .catch((error) => {
+      console.error("Sign out error:", error);
+    });
+}
