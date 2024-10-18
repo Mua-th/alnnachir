@@ -5,6 +5,8 @@ node_modules
 .pnp
 .pnp.js
 
+fireb\index.ts
+
 # testing
 coverage
 
