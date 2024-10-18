@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang="ar">
       <body className={`${inter.className} ` }>
         <Header></Header>
-        <div className="p-24">
+        <div className="p-2 md:p-24">
           
          {children}
         </div>

@@ -1,5 +1,7 @@
+
 'use client'
 import Link from "next/link"
+
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -10,65 +12,68 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { registerUser } from "../../../../../../packages/fireb/auth"
 import { useState } from "react"
-
+import { loginUser } from "../../../../../../packages/fireb/auth"
+import {useRouter} from "next/navigation"
 
 export const description =
-  "A sign up form with first name, last name, email and password inside a card. There's an option to sign up with GitHub and a link to login if you already have an account"
-const  LoginForm =()=> {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const  handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        
-        await registerUser(email, password);
-       
-      };
+  "A login form with email and password. There's an option to login with Google and a link to sign up if you don't have an account."
+
+export default function LoginForm() {
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const router = useRouter()
+
+    const handleSubmit = async(email: string,password: string)=>{
+        await loginUser(email, password)
+        router.push("/")
+    }
   return (
     <Card className="mx-auto max-w-sm font-lateef " dir="rtl">
       <CardHeader>
-        <CardTitle className=" text-right text-5xl">اشتراك</CardTitle>
-        <CardDescription className="text-right text-2xl">
-          أدخل معلوماتك لإنشاء حسابك
+        <CardTitle className="text-4xl">سجل الدخول</CardTitle>
+        <CardDescription className="text-2xl">
+           و غص في عالمك المفضل 
         </CardDescription>
       </CardHeader>
       <CardContent>
-        
-        <div className="grid gap-2 " >
-         
+        <div className="grid gap-2 ">
           <div className="grid  ">
             <Label htmlFor="email" className="text-lg">البريد</Label>
             <Input
-            className="text-lg"
               id="email"
               type="email"
-              value={email}
-              onChange={(e)=>setEmail(e.target.value)}
-              placeholder="ahmedmouhcine@xxx.com"
+              placeholder="m@example.com"
               required
+              className="text-lg"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              
             />
           </div>
-          <div className="grid  ">
-            <Label htmlFor="password" className="text-lg">كلمة السر</Label>
-            <Input   placeholder="*******" className="text-lg" id="password" type="password" onChange={(e)=>setPassword(e.target.value)} value={password} />
+          <div className="grid  " >
+            <div className="flex flex-row items-center  ">
+              <Label htmlFor="password" className="text-lg">كلمة السر</Label>
+              <Link href="#" className="mr-auto  text-lg underline " >
+                نسيت كلمة المرور ؟
+              </Link>
+            </div>
+            <Input value={password} onChange={(e)=>setPassword(e.target.value)} className="text-lg" id="password" type="password" required />
           </div>
-          <Button onClick={handleSubmit} className="w-full text-lg">
-            إنشاء
+          <Button onClick={()=>handleSubmit(email,password)} className="w-full text-lg">
+            سجل
           </Button>
           <Button variant="outline" className="w-full text-lg">
-          google سجل بواسطة 
+          Google سجل بواسطة  
           </Button>
         </div>
-        <div className="mt-4 text-center text-lg ">
-          لديك حساب ؟{" "}
-          <Link href="#" className="underline">
-            سجل الدخول
+        <div className="mt-4 text-center text-sm">
+          ليس لديك حساب ؟{" "}
+          <Link href="/auth/register" className="underline">
+            اشتراك
           </Link>
         </div>
       </CardContent>
     </Card>
   )
 }
-
-export default LoginForm

@@ -7,7 +7,7 @@ export default function Page(): JSX.Element {
   return (
     <main dir='rtl' className="flex flex-col justify-normal items-center  min-h-screen w-full">
       <div className="items-center flex  justify-center w-full ">
-      <div className=" font-lateef text-5xl font-normal text-black w-2/5 text-right  h-5/6" >
+      <div className=" font-lateef text-5xl font-normal text-black w-full md:w-2/5 text-right  h-5/6" >
         
         <TypeAnimation
           sequence={[
