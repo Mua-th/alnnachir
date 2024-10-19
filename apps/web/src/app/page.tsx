@@ -2,39 +2,34 @@
 import { useState } from 'react';
 import { TypeAnimation } from 'react-type-animation';
 import { Separator } from "@/components/ui/separator"
-import Article from '@/components/article';
+import Article from '@/components/comp/article';
+import UserCardFollow from '@/components/comp/userCardFollow';
 
 export default function Page(): JSX.Element {
   return (
-    <main dir='rtl' className="grid grid-rows-[2fr_3fr] grid-flow-row-dense items-start min-h-screen w-full">
-      <div className="items-start flex justify-self-end justify-center w-full overflow-hidden">
-        <div className="font-lateef text-5xl font-normal text-black w-full md:w-2/5 text-right">
-          <TypeAnimation
+    <main dir='rtl' className="grid grid-rows-[1.5fr_3fr]  items-start min-h-screen w-full">
+      <div className="items-start flex  justify-center w-full ">
+        <div className="font-lateef -tracking-tight flex flex-col text-4xl font-light text-muted-foreground w-full md:w-2/5 text-right">
+        <div className='text-7xl font-bold text-foreground'>
+          <h1>الناشر :</h1>
+          <p className='text-6xl'>   رحلة في عالم المعرفة &ensp; .</p>
+        </div>
+        <TypeAnimation
             sequence={[
               // Initial phrase
-              'الناشر :',
-              1000,
               // Building up phrases
-              'الناشر :\nمقالات',
-              500,
-              'الناشر :\nمقالات | آراء',
-              500,
-              'الناشر :\nمقالات | آراء | تدوينات',
-              1000,
+             
               // Full set of phrases
-              'الناشر :\nمقالات | آراء | تدوينات\nتأملات | خواطر | أفكار',
+              '  مقالات , آراء و تأملات  ...  .',
               1500,
-              'الناشر :\nرحلة في عالم المعرفة',
-              1000,
-              // Finale
-              'الناشر :\nنافذة على عالم الإبداع',
-              2000,
+             
+              
               // Reset
               '',
-              1000,
+              3000,
             ]}
             wrapper="div"
-            speed={10}
+            speed={5}
             deletionSpeed={20}
             preRenderFirstString={true}
             style={{
@@ -47,16 +42,23 @@ export default function Page(): JSX.Element {
           />
         </div>
       </div>
-      <div className='flex flex-col justify-start overflow-auto'>
+      <div className='flex flex-col    '>
         <Separator className="mb-4" />
-        <div className='flex justify-between w-full'>
-          <div className='flex flex-col gap-5 flex-grow'>
+        <div className='flex  flex-row justify-between gap-4 w-full p-2'>
+          <div className='flex flex-col gap-5 flex-grow px-4'>
             <Article />
             <Article />
             <Article />
           </div>
-          <div className='w-1/4'>
-            wawa
+          <div className=' hidden md:flex px-4 md:w-'>
+          <Separator orientation='vertical' ></Separator>
+            <div className='flex gap-2 flex-col px-4 '>
+               <div>
+                <UserCardFollow />
+               </div>
+               <div><UserCardFollow /></div>
+               <div><UserCardFollow /></div>
+            </div>
           </div>
         </div>
       </div>

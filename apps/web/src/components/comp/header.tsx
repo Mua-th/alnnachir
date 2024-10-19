@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import { Separator } from './ui/separator'
+import { Separator } from '../ui/separator'
 import Link from 'next/link'
 import { CircleUser, Menu, Package2, Search } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -17,7 +17,7 @@ import { Input } from "@/components/ui/input"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { useAuth } from '@/hooks/useAuth'
 import { signOut } from 'firebase/auth'
-import logoutUser from '../../../../packages/fireb/auth'
+import logoutUser from '../../../../../packages/fireb/auth'
 
 const header = () => {
     const { user, loading } = useAuth();

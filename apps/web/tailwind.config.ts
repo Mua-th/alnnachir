@@ -14,6 +14,7 @@ export default {
   			jet: ['JetBrains Mono'],
   			lateef: ['Lateef'],
   			katib: ['Katibeh'],
+  			rakas: ['Rakkas'],
   		},
   		borderRadius: {
   			lg: 'var(--radius)',
