@@ -13,7 +13,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useState } from "react"
-import { loginUser } from "../../../../../../packages/fireb/auth"
+import { loginUser, signInWithGoogle } from "../../../../../../packages/fireb/auth"
 import {useRouter} from "next/navigation"
 
 export const description =
@@ -25,9 +25,21 @@ export default function LoginForm() {
     const router = useRouter()
 
     const handleSubmit = async(email: string,password: string)=>{
-        await loginUser(email, password)
-        router.push("/")
+       const user =  await loginUser(email, password)
+        if (user) {
+          router.push("/")
+          console.log(user+" logged")
+        }
+       
     }
+    const handleGoogleSignIn = async () => {
+      try {
+        await signInWithGoogle();
+        router.push('/'); // Redirect after Google sign-in
+      } catch (error) {
+        console.error("Error during Google sign-in:", error);
+      }
+    };
   return (
     <Card className="mx-auto max-w-sm font-lateef " dir="rtl">
       <CardHeader>
@@ -63,7 +75,7 @@ export default function LoginForm() {
           <Button onClick={()=>handleSubmit(email,password)} className="w-full text-lg">
             سجل
           </Button>
-          <Button variant="outline" className="w-full text-lg">
+          <Button variant="outline" onClick={handleGoogleSignIn} className="w-full text-lg">
           Google سجل بواسطة  
           </Button>
         </div>

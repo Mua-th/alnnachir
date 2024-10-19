@@ -36,8 +36,10 @@ export const loginUser = async (email: string, password: string) => {
   try {
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
     console.log("Signed in user:", userCredential.user.email);
+    return userCredential.user
   } catch (error) {
     console.error("Sign in error:", error.code, error.message);
+    
   }
 };
 

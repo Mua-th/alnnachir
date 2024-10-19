@@ -2,7 +2,7 @@
 import React from 'react'
 import { Separator } from '../ui/separator'
 import Link from 'next/link'
-import { CircleUser, Menu, Package2, Search } from "lucide-react"
+import { CircleUser, Menu, Package2, Search, SquarePen } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 import {
@@ -104,7 +104,9 @@ const header = () => {
           </div>):
 
              
-          (<DropdownMenu dir='rtl'>
+          (<div className=''>
+          
+          <DropdownMenu dir='rtl'>
             <DropdownMenuTrigger asChild>
               <Button variant="secondary" size="icon" className="rounded-full">
                 <CircleUser className="h-5 w-5" />
@@ -118,7 +120,8 @@ const header = () => {
               <DropdownMenuSeparator />
               <DropdownMenuItem className='text-xl' onClick={handlelogout}>خروج</DropdownMenuItem>
             </DropdownMenuContent>
-          </DropdownMenu>)}
+          </DropdownMenu>
+          </div>)}
         </nav>
         <Sheet>
           <SheetTrigger asChild>

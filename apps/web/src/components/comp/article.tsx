@@ -1,9 +1,9 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { BiSolidLike } from "react-icons/bi";
+import { MdThumbUpOffAlt } from "react-icons/md";
 import React from 'react'
 import { FaComment } from "react-icons/fa";
 import { Separator } from "../ui/separator";
-import { Bookmark, Ellipsis } from "lucide-react";
+import { Bookmark, Ellipsis, MessageCircle, ThumbsUp } from "lucide-react";
 
 
 const article = () => {
@@ -29,14 +29,14 @@ const article = () => {
                         <div className="flex gap-4 items-center text-muted-foreground">
                             <span className="text-sm md:text-lg">6 ساعات</span>
                             <div className="flex  justify-center  ">
-                                <BiSolidLike className=" size-6 py-1 " />
+                                <ThumbsUp   className=" size-6 py-1  " />
                                 <span className=""> 20</span>
 
 
 
                             </div >
                             <div className="flex  justify-center  ">
-                                <FaComment className=" size-6 py-1 " />
+                                <MessageCircle  className=" size-6 py-1 " />
                                 <span className=""> 20</span>
 
                             </div>
