@@ -25,7 +25,7 @@ const userCardFollow = () => {
             </div>
 
             <div className='w-[20%] mr-2'>
-                <Button className='rounded-full w-full px-0 text-xl' variant={"outline"} size={"default"}>
+                <Button className='rounded-full w-full px-0 text-xl font-thin border-muted-foreground py-0 h-8' variant={"outline"} size={"default"}>
                     تابع
                 </Button>
             </div>
