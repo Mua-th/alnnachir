@@ -16,6 +16,8 @@ out/
 build
 .swc/
 
+/packages/utils/credentials.json
+
 # misc
 .DS_Store
 *.pem
