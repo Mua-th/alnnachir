@@ -1,11 +1,14 @@
 'use client'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { TypeAnimation } from 'react-type-animation';
 import { Separator } from "@/components/ui/separator"
 import Article from '@/components/comp/article';
 import UserCardFollow from '@/components/comp/userCardFollow';
 
 export default function Page(): JSX.Element {
+  useEffect(()=> {
+    
+  })
   return (
     <main dir='rtl' className="grid grid-rows-[1.5fr_3fr]  items-start min-h-screen w-full ">
 
