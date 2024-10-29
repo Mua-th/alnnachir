@@ -15,6 +15,8 @@ export default {
   			lateef: ['Lateef'],
   			katib: ['Katibeh'],
   			rakas: ['Rakkas'],
+			lateefar: ['Lateefar', 'sans-serif'],
+			ibm: ['IBM Plex Sans Arabic', 'sans-serif'],
   		},
   		borderRadius: {
   			lg: 'var(--radius)',
