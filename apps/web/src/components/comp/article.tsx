@@ -4,9 +4,11 @@ import React from 'react'
 import { FaComment } from "react-icons/fa";
 import { Separator } from "../ui/separator";
 import { Bookmark, Ellipsis, MessageCircle, ThumbsUp } from "lucide-react";
+import Link from "next/link";
 
 
 const article = () => {
+    
     return (
         <div dir="rtl" className='flex flex-col gap-3 h-52 overflow-hidden font-lateef '>
             <div className="flex justify-start items-center gap-2 ">
@@ -18,12 +20,14 @@ const article = () => {
                     معاد
                 </span>
             </div>
-            <div className="flex gap-2 ">
+            <div className="flex gap-2">
                 <div className="flex gap-2  flex-col w-2/3 ">
-                    <div className="">
+                <Link href={"/article/id"}>
+                    <div className=" hover:cursor-pointer">
                         <h1 className="md:text-4xl text-2xl font-lateef font-bold">هذا عنوان المقال الكبير</h1>
                         <span className="text-muted-foreground font-katib md:text-xl overflow-hidden text-base w-3/4">هدا وصف للمقال يتضمن خلاصة او فكرة عامة عن المقال ويعرض بخط صغير ولون ثانوي و خط كاتبه</span>
                     </div>
+                    </Link>
                     <div className="flex justify-between font-lateef text-lg  " dir="rtl">
 
                         <div className="flex gap-4 items-center text-muted-foreground">
